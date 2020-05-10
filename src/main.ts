@@ -4,6 +4,7 @@ import VueCompositionApi from "@vue/composition-api";
 import App from "./App";
 import "./plugins/element-ui.js";
 import "element-ui/lib/theme-chalk/index.css";
+import "@styl/reset.styl";
 
 Vue.config.productionTip = false;
 Vue.use(VueCompositionApi);
