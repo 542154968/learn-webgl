@@ -21,6 +21,8 @@
     "@vue/cli-service": "^3.11.0",
     "babel-plugin-component": "^1.1.1",
     "babel-preset-vca-jsx": "^0.1.0",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
     "typescript": "^3.5.2",
     "vue-template-compiler": "^2.6.10"
   }
