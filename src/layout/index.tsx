@@ -3,7 +3,7 @@ import AsideMenu from "./Aside.vue";
 
 export default createComponent({
   name: "layout",
-  setup() {
+  setup(props, { slots }) {
     return () => (
       <el-container>
         <el-header>Header</el-header>
@@ -11,9 +11,7 @@ export default createComponent({
           <el-aside width="200px">
             <AsideMenu></AsideMenu>
           </el-aside>
-          <el-main>
-            <slot></slot>
-          </el-main>
+          <el-main>{slots.default}</el-main>
         </el-container>
       </el-container>
     );
