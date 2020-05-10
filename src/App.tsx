@@ -1,4 +1,3 @@
-import "./App.css";
 import { createComponent } from "@vue/composition-api";
 import HelloWorld from "./components/HelloWorld";
 import ImageLogo from "./assets/logo.png";
