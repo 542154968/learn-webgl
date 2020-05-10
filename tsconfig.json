@@ -17,7 +17,8 @@
       "@/components/*": ["src/components/*"],
       "@/layout/*": ["src/layout/*"],
       "@/views/*": ["src/views/*"],
-      "@/js/*": ["src/assets/js/*"]
+      "@/js/*": ["src/assets/js/*"],
+      "@/styl/*": ["src/assets/stylus/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
