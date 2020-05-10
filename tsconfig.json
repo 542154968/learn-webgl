@@ -12,7 +12,12 @@
     "baseUrl": ".",
     "types": ["webpack-env"],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@/assets/*": ["src/assets/*"],
+      "@/components/*": ["src/components/*"],
+      "@/layout/*": ["src/layout/*"],
+      "@/views/*": ["src/views/*"],
+      "@/js/*": ["src/assets/js/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
