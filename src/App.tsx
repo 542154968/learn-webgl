@@ -9,11 +9,12 @@ export default createComponent({
     return () => (
       <div id="app">
         <img alt="Vue" src={ImageLogo} />
-        <el-button>21321</el-button>
+        <el-button>测试element</el-button>
         <HelloWorld
           msg="Welcome to Your Vue.js + TypeScript App"
           eventClick={e => console.log("click", e.target)}
         />
+        <router-view></router-view>
       </div>
     );
   }
