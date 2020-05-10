@@ -13,12 +13,12 @@
     "types": ["webpack-env"],
     "paths": {
       "@/*": ["src/*"],
-      "@/assets/*": ["src/assets/*"],
-      "@/components/*": ["src/components/*"],
-      "@/layout/*": ["src/layout/*"],
-      "@/views/*": ["src/views/*"],
-      "@/js/*": ["src/assets/js/*"],
-      "@/styl/*": ["src/assets/stylus/*"]
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@layout/*": ["src/layout/*"],
+      "@views/*": ["src/views/*"],
+      "@js/*": ["src/assets/js/*"],
+      "@styl/*": ["src/assets/stylus/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
