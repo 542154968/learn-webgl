@@ -7,9 +7,6 @@ type PropsType = {
 };
 
 export default createComponent({
-  components: {
-    MenuContain
-  },
   props: {
     child: {
       default() {
