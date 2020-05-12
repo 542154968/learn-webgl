@@ -1,0 +1,26 @@
+.el-menu-item, .el-submenu__title {
+    a {
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        span {
+            color: #303133;
+            transition: color 0.5s;
+        }
+    }
+}
+
+.el-menu-item {
+    &:focus {
+        background: #fff;
+    }
+
+    &.is-active {
+        background: #ECF5FF;
+
+        a span {
+            color: $baseC;
+        }
+    }
+}

@@ -32,6 +32,7 @@ import { createComponent } from "@vue/composition-api";
 import routes from "./routes";
 import MenuItem from "./MenuItem";
 import MenuContain from "./MenuContain";
+import "./index.styl";
 
 export default createComponent({
   name: "aside-menu",
