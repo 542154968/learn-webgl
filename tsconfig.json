@@ -18,7 +18,8 @@
       "@layout/*": ["src/layout/*"],
       "@views/*": ["src/views/*"],
       "@js/*": ["src/assets/js/*"],
-      "@styl/*": ["src/assets/stylus/*"]
+      "@styl/*": ["src/assets/stylus/*"],
+      "@hooks/*": ["src/hooks/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },

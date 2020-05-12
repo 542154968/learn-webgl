@@ -19,6 +19,7 @@ module.exports = {
       .set("@views", resolve("src/views"))
       .set("@styl", resolve("src/assets/stylus"))
       .set("@js", resolve("src/assets/js"))
-      .set("@images", resolve("src/assets/images"));
+      .set("@images", resolve("src/assets/images"))
+      .set("@hooks", resolve("src/hooks"));
   }
 };

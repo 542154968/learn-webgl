@@ -1,6 +1,6 @@
 import { onMounted, onBeforeUnmount } from "@vue/composition-api";
 
-function eventEmit<K extends keyof GlobalEventHandlersEventMap>(
+function useEventEmit<K extends keyof GlobalEventHandlersEventMap>(
   el: HTMLBaseElement | Window,
   eventType: K,
   listener: EventListenerOrEventListenerObject
@@ -22,4 +22,4 @@ function eventEmit<K extends keyof GlobalEventHandlersEventMap>(
   }
 }
 
-export default eventEmit;
+export default useEventEmit;
