@@ -19,7 +19,7 @@ export default createComponent({
 
     function hanldeRouterToPath() {
       event && event.preventDefault();
-      item.isPage && "$router" in root && root.$router.push(item.path);
+      item.isPage && root.$router.push(item.path);
     }
 
     return () => (
