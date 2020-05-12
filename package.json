@@ -7,23 +7,23 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@vue/composition-api": "^0.3.2",
-    "core-js": "^2.6.5",
+    "@vue/composition-api": "^0.3.4",
+    "core-js": "^2.6.11",
     "element-ui": "^2.13.1",
-    "vue": "^2.6.10",
+    "vue": "^2.6.11",
     "vue-router": "^3.1.6"
   },
   "devDependencies": {
     "@types/node": "^13.13.5",
     "@types/webpack-env": "^1.15.2",
-    "@vue/cli-plugin-babel": "^3.11.0",
-    "@vue/cli-plugin-typescript": "^3.11.0",
-    "@vue/cli-service": "^3.11.0",
+    "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-plugin-typescript": "^3.12.1",
+    "@vue/cli-service": "^3.12.1",
     "babel-plugin-component": "^1.1.1",
     "babel-preset-vca-jsx": "^0.1.0",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
-    "typescript": "^3.5.2",
-    "vue-template-compiler": "^2.6.10"
+    "typescript": "^3.8.3",
+    "vue-template-compiler": "^2.6.11"
   }
 }
