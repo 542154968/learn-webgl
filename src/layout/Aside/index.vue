@@ -1,49 +1,49 @@
 <template>
-  <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
-    <el-submenu index="1">
-      <template slot="title">
-        <i class="el-icon-location"></i>
-        <span>导航一</span>
-      </template>
-      <el-menu-item-group>
-        <template slot="title">分组一</template>
-        <el-menu-item index="1-1">选项1</el-menu-item>
-        <el-menu-item index="1-2">选项2</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group title="分组2">
-        <el-menu-item index="1-3">选项3</el-menu-item>
-      </el-menu-item-group>
-      <el-submenu index="1-4">
-        <template slot="title">选项4</template>
-        <el-menu-item index="1-4-1">选项1</el-menu-item>
+  <el-menu
+    :default-active="routerPath"
+    class="el-menu-vertical-demo"
+    @open="handleOpen"
+    @close="handleClose"
+    router
+  >
+    <template v-for="item in routes">
+      <el-submenu
+        :key="item.path"
+        :index="item.path"
+        v-if="Array.isArray(item.children) && item.children.length > 0"
+      >
+        <template slot="title">
+          <MenuContain :item="item" />
+        </template>
+        <MenuItem
+          v-for="child in item.children"
+          :child="child"
+          :key="child.path"
+          :index="child.path"
+        />
       </el-submenu>
-    </el-submenu>
-    <el-menu-item index="2">
-      <i class="el-icon-menu"></i>
-      <span slot="title">导航二</span>
-    </el-menu-item>
-    <el-menu-item index="3" disabled>
-      <i class="el-icon-document"></i>
-      <span slot="title">导航三</span>
-    </el-menu-item>
-    <el-menu-item index="4">
-      <i class="el-icon-setting"></i>
-      <span slot="title">导航四</span>
-    </el-menu-item>
+      <MenuItem v-else :child="item" :key="item.path" :index="item.path" />
+    </template>
   </el-menu>
 </template>
 
 <script lang="ts">
 import { createComponent } from "@vue/composition-api";
+import routes from "./routes";
+import MenuItem from "./MenuItem";
+import MenuContain from "./MenuContain";
 
 export default createComponent({
   name: "aside-menu",
-  setup() {
+  components: { MenuItem, MenuContain },
+  setup(prop, { root }) {
     function handleOpen() {}
     function handleClose() {}
     return {
       handleOpen,
-      handleClose
+      handleClose,
+      routes,
+      routerPath: root.$route.path
     };
   }
 });
