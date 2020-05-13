@@ -1,4 +1,6 @@
-import { createComponent, ref, onMounted } from "@vue/composition-api";
+import NiceContain from "@components/NiceContain";
+import { createComponent, onMounted } from "@vue/composition-api";
+import "@styl/basic.styl";
 
 export default createComponent({
   name: "App",
@@ -7,6 +9,6 @@ export default createComponent({
       console.log(refs.div);
     });
 
-    return () => <div class="page-index" ref="div"></div>;
+    return () => <NiceContain>`let's begin!`</NiceContain>;
   }
 });

@@ -1,12 +1,15 @@
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: () => import(/* webpackChunkName: "home" */ "@/views/index.tsx")
+    component: () => import(/* webpackChunkName: "index" */ "@/views/index.tsx")
+  },
+  {
+    path: "/canvas",
+    component: () =>
+      import(/* webpackChunkName: "canvas" */ "@/views/canvas/index.tsx")
   },
   {
     path: "/child",
-    name: "child",
     component: () => import(/* webpackChunkName: "child" */ "@/views/Child.tsx")
   }
   //   {
