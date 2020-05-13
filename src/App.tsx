@@ -1,5 +1,6 @@
 import { createComponent } from "@vue/composition-api";
 import Layout from "./layout/index";
+import "@styl/basic.styl";
 
 export default createComponent({
   name: "App",
