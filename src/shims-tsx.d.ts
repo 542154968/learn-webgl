@@ -1,5 +1,5 @@
-import Vue, { VNode } from 'vue'
-import { ComponentRenderProxy } from '@vue/composition-api'
+import Vue, { VNode } from "vue";
+import { ComponentRenderProxy } from "@vue/composition-api";
 
 declare global {
   namespace JSX {
@@ -11,7 +11,13 @@ declare global {
       $props: any; // specify the property name to use
     }
     interface IntrinsicElements {
-      [elem: string]: any
+      [elem: string]: any;
     }
+  }
+}
+
+declare module "@vue/composition-api/dist/component/component" {
+  interface SetupContext {
+    refs: Data;
   }
 }

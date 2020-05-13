@@ -1,8 +1,12 @@
-import { createComponent } from "@vue/composition-api";
+import { createComponent, ref, onMounted } from "@vue/composition-api";
 
 export default createComponent({
   name: "App",
-  setup() {
-    return () => <div>这是首页哦~</div>;
+  setup(props, { refs }) {
+    onMounted(() => {
+      console.log(refs.div);
+    });
+
+    return () => <div class="page-index" ref="div"></div>;
   }
 });
