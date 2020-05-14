@@ -128,7 +128,7 @@ function handleCreationError(msg: string) {
  */
 const setupWebGL = function(
   canvas: HTMLCanvasElement,
-  opt_attribs?: any,
+  opt_attribs: WebGLContextAttributes,
   opt_onError?: (msg: string) => void
 ) {
   opt_onError = opt_onError || handleCreationError;
@@ -162,19 +162,22 @@ const setupWebGL = function(
  */
 const create3DContext = function(
   canvas: HTMLCanvasElement,
-  opt_attribs: string
+  opt_attribs: WebGLContextAttributes
 ) {
-  var names = ["webgl", "experimental-webgl", "webkit-3d", "moz-webgl"];
-  var context = null;
-  for (var ii = 0; ii < names.length; ++ii) {
-    try {
-      context = canvas.getContext(names[ii], opt_attribs);
-    } catch (e) {}
-    if (context) {
-      break;
-    }
-  }
-  return context;
+  // let names = ["webgl", "experimental-webgl", "webkit-3d", "moz-webgl"];
+  // let context = null;
+  // for (let ii = 0; ii < names.length; ++ii) {
+  //   try {
+  //     // webgl
+  //     context = canvas.getContext(names[ii], opt_attribs);
+  //   } catch (e) {}
+  //   if (context) {
+  //     break;
+  //   }
+  // }
+  // context = canvas.getContext("webgl", opt_attribs);
+  // 时代变了 只需要这样写就行了
+  return canvas.getContext("webgl", opt_attribs);
 };
 
 export default { create3DContext, setupWebGL };

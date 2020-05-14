@@ -16,8 +16,11 @@ declare global {
   }
 }
 
+type RefsData = {
+  [key: string]: any;
+};
 declare module "@vue/composition-api/dist/component/component" {
   interface SetupContext {
-    refs: Data;
+    refs: RefsData;
   }
 }
