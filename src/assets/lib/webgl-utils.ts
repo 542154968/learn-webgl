@@ -128,7 +128,7 @@ function handleCreationError(msg: string) {
  */
 const setupWebGL = function(
   canvas: HTMLCanvasElement,
-  opt_attribs: WebGLContextAttributes,
+  opt_attribs: WebGLContextAttributes = {},
   opt_onError?: (msg: string) => void
 ) {
   opt_onError = opt_onError || handleCreationError;
@@ -162,7 +162,7 @@ const setupWebGL = function(
  */
 const create3DContext = function(
   canvas: HTMLCanvasElement,
-  opt_attribs: WebGLContextAttributes
+  opt_attribs: WebGLContextAttributes = {}
 ) {
   // let names = ["webgl", "experimental-webgl", "webkit-3d", "moz-webgl"];
   // let context = null;
