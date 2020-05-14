@@ -19,7 +19,8 @@
       "@views/*": ["src/views/*"],
       "@js/*": ["src/assets/js/*"],
       "@styl/*": ["src/assets/stylus/*"],
-      "@hooks/*": ["src/hooks/*"]
+      "@hooks/*": ["src/hooks/*"],
+      "@lib/*": ["src/assets/lib/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
