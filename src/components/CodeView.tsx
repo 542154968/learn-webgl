@@ -19,7 +19,7 @@ function formtReservedWord(text: string = "") {
 // 匹配引号间的内容
 function formatQuotes(text: string = "") {
   return text.replace(
-    /(?<=")(.*)?(?=")/g,
+    /(?<=&quot|&#39)(.*)?(?=&quot|&#39)/g,
     '<span class="hljs-string">$1</span>'
   );
 }
@@ -32,6 +32,14 @@ function formatNum(text: string) {
   );
 }
 
+function decodingFormat(text: string) {
+  return text
+    .replace(/</g, "&lt")
+    .replace(/>/g, "&gt")
+    .replace(/"/g, "&quot")
+    .replace(/'/g, "&#39");
+}
+
 export default createComponent({
   props: {
     code: {
@@ -42,7 +50,7 @@ export default createComponent({
   setup(props: { code: string }, { refs }) {
     onMounted(() => {
       refs.codeContain.innerHTML = formatCode(
-        formatNum(formatQuotes(props.code))
+        formatNum(formatQuotes(decodingFormat(props.code)))
       );
     });
 
