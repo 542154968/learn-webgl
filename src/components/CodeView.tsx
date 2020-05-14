@@ -32,6 +32,7 @@ function formatNum(text: string) {
   );
 }
 
+// 匹配敏感字符 避免执行了代码
 function decodingFormat(text: string) {
   return text
     .replace(/</g, "&lt")
