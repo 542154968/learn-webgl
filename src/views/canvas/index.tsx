@@ -1,4 +1,5 @@
 import { createComponent, onMounted } from "@vue/composition-api";
+import CodeView from "@components/CodeView";
 import NiceContain from "@components/NiceContain";
 import { getWebGLContext } from "@lib/cuon-utils";
 
@@ -11,7 +12,6 @@ export default createComponent({
     function initCanvas() {
       const canvas = refs["el-webgl"];
       let gl = getWebGLContext(canvas);
-      console.log(gl);
       if (!gl) {
         console.log("Faile to load");
       }
@@ -22,6 +22,20 @@ export default createComponent({
     return () => (
       <NiceContain>
         <canvas id="wegbl" ref="el-webgl" width="400" height="400"></canvas>
+        <CodeView
+          code={`
+          const canvas = refs["el-webgl"];
+          let gl = getWebGLContext(canvas);
+          if (!gl) {
+            console.log("Faile to load");
+          }
+          break 
+          new 
+          const age = 18;
+          gl!.clearColor(1, 0.5, 0.5, 3);
+          gl!.clear(gl!.COLOR_BUFFER_BIT);
+          `}
+        ></CodeView>
       </NiceContain>
     );
   }

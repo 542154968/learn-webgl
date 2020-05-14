@@ -15,7 +15,7 @@ const routes: RoutesType = [
     children: [
       {
         path: "/canvas",
-        name: "canvas是什么？",
+        name: "最短的webgl程序",
         icon: "",
         isPage: true
       },
