@@ -53,7 +53,6 @@ function formatNotes(text: string) {
 
 // 匹配``之间的
 function formatBackquote(text: string) {
-  console.log(text);
   return text.replace(
     /(?:`)([^`]*)?(?=`\s*;)/g,
     '`<span class="hljs-string">$1</span>'

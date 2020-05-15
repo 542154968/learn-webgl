@@ -1,24 +1,26 @@
 <template>
-  <el-menu :default-active="routerPath" @open="handleOpen" @close="handleClose" router>
-    <template v-for="item in routes">
-      <el-submenu
-        :key="item.path"
-        :index="item.path"
-        v-if="Array.isArray(item.children) && item.children.length > 0"
-      >
-        <template slot="title">
-          <MenuContain :item="item" />
-        </template>
-        <MenuItem
-          v-for="child in item.children"
-          :child="child"
-          :key="child.path"
-          :index="child.path"
-        />
-      </el-submenu>
-      <MenuItem v-else :child="item" :key="item.path" :index="item.path" />
-    </template>
-  </el-menu>
+  <el-scrollbar>
+    <el-menu :default-active="routerPath" @open="handleOpen" @close="handleClose" router>
+      <template v-for="item in routes">
+        <el-submenu
+          :key="item.path"
+          :index="item.path"
+          v-if="Array.isArray(item.children) && item.children.length > 0"
+        >
+          <template slot="title">
+            <MenuContain :item="item" />
+          </template>
+          <MenuItem
+            v-for="child in item.children"
+            :child="child"
+            :key="child.path"
+            :index="child.path"
+          />
+        </el-submenu>
+        <MenuItem v-else :child="item" :key="item.path" :index="item.path" />
+      </template>
+    </el-menu>
+  </el-scrollbar>
 </template>
 
 <script lang="ts">
