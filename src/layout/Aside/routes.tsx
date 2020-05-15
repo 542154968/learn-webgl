@@ -20,8 +20,8 @@ const routes: RoutesType = [
         isPage: true
       },
       {
-        path: "/webgl",
-        name: "webgl是什么？",
+        path: "/section2/class2",
+        name: "绘制一个点",
         icon: "",
         isPage: true
       }

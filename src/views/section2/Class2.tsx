@@ -1,13 +1,12 @@
 import { createComponent, onMounted } from "@vue/composition-api";
 import CodeView from "@components/CodeView";
-import WebGLContain from "@/components/WebGLContain";
 import NiceContain from "@components/NiceContain";
+import WebGLContain from "@/components/WebGLContain";
 
 export default createComponent({
-  setup() {
+  setup(props, { root }) {
     function handleCanvasReady(gl: WebGLRenderingContext) {
-      gl.clearColor(1, 0.5, 0.5, 3);
-      gl.clear(gl!.COLOR_BUFFER_BIT);
+      console.log(gl);
     }
 
     return () => (

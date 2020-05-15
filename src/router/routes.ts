@@ -6,7 +6,12 @@ const routes = [
   {
     path: "/section2/class1",
     component: () =>
-      import(/* webpackChunkName: "canvas" */ "@/views/section2/class1")
+      import(/* webpackChunkName: "section2-1" */ "@/views/section2/Class1")
+  },
+  {
+    path: "/section2/class2",
+    component: () =>
+      import(/* webpackChunkName: "section2-2" */ "@/views/section2/Class2")
   },
   {
     path: "/child",
