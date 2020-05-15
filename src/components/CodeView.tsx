@@ -8,7 +8,7 @@ debugger\* function this with
 default if throw 
 delete in try let const`;
 const reservedRegExp = new RegExp(
-  `(${reservedWord.replace(/\s+/g, "|")})(?= +|;)`,
+  `(${reservedWord.replace(/\s+/g, "|")})(?= +|;|&nbsp;)`,
   "g"
 );
 // 匹配保留字
@@ -19,7 +19,7 @@ function formtReservedWord(text: string = "") {
 // 匹配引号间的内容
 function formatQuotes(text: string = "") {
   return text.replace(
-    /(?<=&quot|&#39)(.*)?(?=&quot|&#39)/g,
+    /(?:&quot|&#39)(.*)?(?:&quot|&#39)/g,
     '<span class="hljs-string">$1</span>'
   );
 }
@@ -39,14 +39,24 @@ function decodingFormat(text: string) {
     .replace(/>/g, "&gt")
     .replace(/"/g, "&quot")
     .replace(/'/g, "&#39");
+  // .replace(/\n|\r/g, "\n")
+  // .replace(/ /g, "&nbsp;");
 }
 
 // 匹配//注释
-
 function formatNotes(text: string) {
   return text.replace(
-    /(\/\/.+)(?=\n)/g,
+    /(\/\/(&nbsp;)?.+)(?=\n)/g,
     '<span class="hljs-comment">$1</span>'
+  );
+}
+
+// 匹配``之间的
+function formatBackquote(text: string) {
+  console.log(text);
+  return text.replace(
+    /(?:`)([^`]*)?(?:`\s*;)/g,
+    '<span class="hljs-string">$1</span>'
   );
 }
 
@@ -64,7 +74,9 @@ export default createComponent({
 
     function formatCode(code: string) {
       return formatNotes(
-        formtReservedWord(formatNum(formatQuotes(decodingFormat(code))))
+        formtReservedWord(
+          formatNum(formatBackquote(formatQuotes(decodingFormat(code))))
+        )
       );
     }
 
