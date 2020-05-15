@@ -4,9 +4,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "index" */ "@/views/index.tsx")
   },
   {
-    path: "/canvas",
+    path: "/section2/class1",
     component: () =>
-      import(/* webpackChunkName: "canvas" */ "@/views/canvas/index.tsx")
+      import(/* webpackChunkName: "canvas" */ "@/views/section2/class1")
   },
   {
     path: "/child",

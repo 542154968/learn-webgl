@@ -14,7 +14,7 @@ const routes: RoutesType = [
     isPage: false,
     children: [
       {
-        path: "/canvas",
+        path: "/section2/class1",
         name: "最短的webgl程序",
         icon: "",
         isPage: true
