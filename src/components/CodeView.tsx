@@ -59,13 +59,13 @@ export default createComponent({
   },
   setup(props: { code: string }, { refs }) {
     onMounted(() => {
-      refs.codeContain.innerHTML = formatNotes(
-        formatCode(formatNum(formatQuotes(decodingFormat(props.code))))
-      );
+      refs.codeContain.innerHTML = formatCode(props.code);
     });
 
     function formatCode(code: string) {
-      return formtReservedWord(code);
+      return formatNotes(
+        formtReservedWord(formatNum(formatQuotes(decodingFormat(code))))
+      );
     }
 
     return () => (
