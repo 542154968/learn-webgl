@@ -41,6 +41,15 @@ function decodingFormat(text: string) {
     .replace(/'/g, "&#39");
 }
 
+// 匹配//注释
+
+function formatNotes(text: string) {
+  return text.replace(
+    /(\/\/.+)(?=\n)/g,
+    '<span class="hljs-comment">$1</span>'
+  );
+}
+
 export default createComponent({
   props: {
     code: {
@@ -50,8 +59,8 @@ export default createComponent({
   },
   setup(props: { code: string }, { refs }) {
     onMounted(() => {
-      refs.codeContain.innerHTML = formatCode(
-        formatNum(formatQuotes(decodingFormat(props.code)))
+      refs.codeContain.innerHTML = formatNotes(
+        formatCode(formatNum(formatQuotes(decodingFormat(props.code))))
       );
     });
 
