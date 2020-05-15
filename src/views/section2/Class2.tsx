@@ -23,6 +23,16 @@ const FSHADER_SOURCE = `
  }
 `;
 
+// 代码片段
+const codeStr = `
+// 顶点着色器
+const VSHADER_SOURCE = \`${VSHADER_SOURCE}\`;
+// 片元着色器
+const FSHADER_SOURCE = \`${FSHADER_SOURCE}\`;
+${class1CodeStr}
+gl.drawArrays(gl.POINTS, 0, 1);
+`;
+
 function handleCanvasReady(gl: WebGLRenderingContext) {
   if (!initShaders(gl, VSHADER_SOURCE, FSHADER_SOURCE)) {
     console.log("failed to initialize shaders");
@@ -36,14 +46,6 @@ function handleCanvasReady(gl: WebGLRenderingContext) {
   gl.drawArrays(gl.POINTS, 0, 1);
 }
 
-const codeStr = `
-// 顶点着色器
-const VSHADER_SOURCE = \`${VSHADER_SOURCE}\`;
-// 片元着色器
-const FSHADER_SOURCE = \`${FSHADER_SOURCE}\`;
-${class1CodeStr}
-gl.drawArrays(gl.POINTS, 0, 1);
-`;
 export default createComponent({
   setup() {
     return () => (
