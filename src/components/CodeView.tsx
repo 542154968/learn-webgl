@@ -27,7 +27,7 @@ function formatQuotes(text: string = "") {
 // 匹配非引号间的数字
 function formatNum(text: string) {
   return text.replace(
-    /(\d+(\.\d+)?)(?=,| |;|\))/g,
+    /\b(\d+(\.\d+)?)(?=,| |;|\))/g,
     '<span class="hljs-number">$1</span>'
   );
 }
