@@ -44,8 +44,12 @@ gl.drawArrays(gl.POINTS, 0, 1);
 // 三维图形在计算过程中，通常使用齐次坐标来表示顶点的三维坐标
 `;
 
-function handleCanvasReady(gl: WebGLRenderingContext) {
-  if (!initShaders(gl, VSHADER_SOURCE, FSHADER_SOURCE)) {
+export function handleCanvasReady(
+  gl: WebGLRenderingContext,
+  VSHADER = VSHADER_SOURCE,
+  FSHADER = FSHADER_SOURCE
+) {
+  if (!initShaders(gl, VSHADER, FSHADER)) {
     console.log("failed to initialize shaders");
     return;
   }
