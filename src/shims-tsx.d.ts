@@ -16,11 +16,19 @@ declare global {
   }
 }
 
+// 扩展composition-api 让其含有refs的对象声明
 type RefsData = {
   [key: string]: any;
 };
 declare module "@vue/composition-api/dist/component/component" {
   interface SetupContext {
     refs: RefsData;
+  }
+}
+
+// 全局扩展 WebGLRenderingContext 让其含有我们定义的program对象
+declare global {
+  interface WebGLRenderingContext {
+    program: WebGLProgram;
   }
 }
