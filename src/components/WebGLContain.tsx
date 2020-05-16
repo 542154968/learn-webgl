@@ -30,12 +30,12 @@ export default createComponent({
     });
 
     function initCanvas() {
-      const canvas = refs["el-webgl"];
+      const canvas: HTMLCanvasElement = refs["el-webgl"];
       let gl = getWebGLContext(canvas);
       if (!gl) {
         console.log("Faile to load");
       }
-      emit("canvasReady", gl);
+      emit("canvasReady", gl, canvas);
     }
 
     return () => (
