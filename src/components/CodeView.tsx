@@ -59,6 +59,14 @@ function formatBackquote(text: string) {
   );
 }
 
+// 匹配方法名
+function formatFunctionName(text: string) {
+  return text.replace(
+    /(\.|function )(\w*)(?=\()/g,
+    '$1<span class="hljs-attribute">$2</span>'
+  );
+}
+
 export default createComponent({
   props: {
     code: {
@@ -74,7 +82,9 @@ export default createComponent({
     function formatCode(code: string) {
       return formatNotes(
         formtReservedWord(
-          formatNum(formatBackquote(formatQuotes(decodingFormat(code))))
+          formatFunctionName(
+            formatNum(formatBackquote(formatQuotes(decodingFormat(code))))
+          )
         )
       );
     }
