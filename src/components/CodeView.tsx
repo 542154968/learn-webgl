@@ -62,8 +62,16 @@ function formatBackquote(text: string) {
 // 匹配方法名
 function formatFunctionName(text: string) {
   return text.replace(
-    /(\.|function )(\w*)(?=\()/g,
+    /(\.|function )(\w+)(?=\()/g,
     '$1<span class="hljs-attribute">$2</span>'
+  );
+}
+
+// 匹配类型
+function formatArgsType(text: string) {
+  return text.replace(
+    /(:\s+)([a-z]+)(?=\b)/gi,
+    '$1<span class="hljs-type">$2</span>'
   );
 }
 
@@ -82,8 +90,10 @@ export default createComponent({
     function formatCode(code: string) {
       return formatNotes(
         formtReservedWord(
-          formatFunctionName(
-            formatNum(formatBackquote(formatQuotes(decodingFormat(code))))
+          formatArgsType(
+            formatFunctionName(
+              formatNum(formatBackquote(formatQuotes(decodingFormat(code))))
+            )
           )
         )
       );
