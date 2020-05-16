@@ -30,6 +30,12 @@ const routes: RoutesType = [
         name: "WebGL坐标系统",
         icon: "",
         isPage: true
+      },
+      {
+        path: "/section2/class4",
+        name: "Attribute变量",
+        icon: "",
+        isPage: true
       }
     ]
   }
