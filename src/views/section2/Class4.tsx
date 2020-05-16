@@ -113,10 +113,7 @@ function handleClick(
 }
 `;
 
-function handleCanvasReady(
-  gl: WebGLRenderingContext,
-  canvas: HTMLCanvasElement
-) {
+function handleCanvasReady(gl: WebGLRenderingContext) {
   // 初始化着色器
   if (!initShaders(gl, VSHADER_SOURCE, FSHADER_SOURCE)) {
     console.log("failed to initialize shaders");
@@ -149,6 +146,7 @@ function handleCanvasReady(
   // 绘制一个点
   gl.drawArrays(gl.POINTS, 0, 1);
 
+  let canvas = document.querySelector("#webgl") as HTMLCanvasElement;
   canvas.onmousedown = function(evt) {
     handleClick(evt, gl, canvas, a_Position);
   };

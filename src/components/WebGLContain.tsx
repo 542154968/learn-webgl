@@ -35,13 +35,13 @@ export default createComponent({
       if (!gl) {
         console.log("Faile to load");
       }
-      emit("canvasReady", gl, canvas);
+      emit("canvasReady", gl);
     }
 
     return () => (
       <NiceContain>
         <canvas
-          id="wegbl"
+          id="webgl"
           ref="el-webgl"
           width={props.width}
           height={props.height}
