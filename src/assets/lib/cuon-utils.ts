@@ -9,7 +9,11 @@ const WebGLDebugUtil = require("webgl-debug");
  * @param fshader a fragment shader program (string)
  * @return true, if the program object was created and successfully made current
  */
-export function initShaders(gl: any, vshader: string, fshader: string) {
+export function initShaders(
+  gl: WebGLRenderingContext,
+  vshader: string,
+  fshader: string
+) {
   var program = createProgram(gl, vshader, fshader);
   if (!program) {
     console.log("Failed to create program");
@@ -18,7 +22,6 @@ export function initShaders(gl: any, vshader: string, fshader: string) {
 
   gl.useProgram(program);
   gl.program = program;
-
   return true;
 }
 
@@ -29,7 +32,11 @@ export function initShaders(gl: any, vshader: string, fshader: string) {
  * @param fshader a fragment shader program (string)
  * @return created program object, or null if the creation has failed
  */
-export function createProgram(gl: any, vshader: string, fshader: string) {
+export function createProgram(
+  gl: WebGLRenderingContext,
+  vshader: string,
+  fshader: string
+) {
   // Create shader object
   var vertexShader = loadShader(gl, gl.VERTEX_SHADER, vshader);
   var fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fshader);
