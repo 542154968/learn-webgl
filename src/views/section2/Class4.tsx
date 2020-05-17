@@ -99,13 +99,21 @@ function handleClick(
   let x = event.clientX;
   let y = event.clientY;
   let rect = canvas.getBoundingClientRect();
+  // x-rect.left y-rect.top 就是canvas的xy屏幕坐标 就是在canvas中的坐标
+  // canvas.height / 2 与 canvas.width / 2 计算出canvas的原点平移到中心点 与 WebGL的坐标系对应
+  // 因为canvas的宽高都是400 x, y 轴的坐标区间所以都是[0, 400]
+  // 而WebGL轴的坐标区间是[-1.0, 1.0] 
+  // 所以将 x, y的坐标都除以对应的区间范围  就是相当于 x, y占坐标轴的百分之多少
   x = (x - rect.left - canvas.height / 2) / (canvas.height / 2);
   y = (canvas.width / 2 - (y - rect.top)) / (canvas.width / 2);
+  // 为什么要记录这些点  
+  // 因为WebGL的绘制操作是在颜色缓冲区中进行的，绘制结束缓冲区得内容显示在屏幕上，颜色缓冲区被重置
   g_points.push(x, y);
 
   // 清除canvas
   gl.clear(gl.COLOR_BUFFER_BIT);
   let len = g_points.length;
+  // 每次取两个点(x, y)坐标 所以每次跳过前两个点
   for (let i = 0; i < len; i += 2) {
     gl.vertexAttrib3f(a_Position, g_points[i], g_points[i + 1], 0.0);
     gl.drawArrays(gl.POINTS, 0, 1);
@@ -162,13 +170,21 @@ function handleClick(
   let x = event.clientX;
   let y = event.clientY;
   let rect = canvas.getBoundingClientRect();
+  // x-rect.left y-rect.top 就是canvas的xy屏幕坐标 就是在canvas中的坐标
+  // canvas.height / 2 与 canvas.width / 2 计算出canvas的原点平移到中心点 与 WebGL的坐标系对应
+  // 因为canvas的宽高都是400 x, y 轴的坐标区间所以都是[0, 400]
+  // 而WebGL轴的坐标区间是[-1.0, 1.0]
+  // 所以将 x, y的坐标都除以对应的区间范围  就是相当于 x, y占坐标轴的百分之多少
   x = (x - rect.left - canvas.height / 2) / (canvas.height / 2);
   y = (canvas.width / 2 - (y - rect.top)) / (canvas.width / 2);
+  // 为什么要记录这些点
+  // 因为WebGL的绘制操作是在颜色缓冲区中进行的，绘制结束缓冲区得内容显示在屏幕上，颜色缓冲区被重置
   g_points.push(x, y);
 
   // 清除canvas
   gl.clear(gl.COLOR_BUFFER_BIT);
   let len = g_points.length;
+  // 每次取两个点(x, y)坐标 所以每次跳过前两个点
   for (let i = 0; i < len; i += 2) {
     gl.vertexAttrib3f(a_Position, g_points[i], g_points[i + 1], 0.0);
     gl.drawArrays(gl.POINTS, 0, 1);
