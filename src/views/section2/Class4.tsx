@@ -21,9 +21,11 @@ const VSHADER_SOURCE = `
 
 // 片元着色器
 const FSHADER_SOURCE = `
+precision mediump float;
+uniform vec4 u_FragColor;
 void main(){
    // 设置颜色
-   gl_FragColor = vec4(0.0, 1.0, 0.0, 1.0);
+   gl_FragColor = u_FragColor;
  }
 `;
 
@@ -132,12 +134,18 @@ function handleCanvasReady(gl: WebGLRenderingContext) {
   // gl.program是指定包含顶点着色器和片元着色器的着色器程序对象
   let a_Position = gl.getAttribLocation(gl.program, "a_Position");
   let a_PointSize = gl.getAttribLocation(gl.program, "a_PointSize");
+  let u_FragColor = gl.getUniformLocation(gl.program, "u_FragColor");
+
   if (a_Position < 0) {
     console.log("Failed to get the storage laoction of  a_Position");
     return;
   }
   if (a_PointSize < 0) {
     console.log("Failed to get the storage laoction of  a_PointSize");
+    return;
+  }
+  if (!u_FragColor) {
+    console.log("Failed to get the storage laoction of  u_FragColor");
     return;
   }
   // 将顶点位置传输给attribute变量
@@ -156,16 +164,21 @@ function handleCanvasReady(gl: WebGLRenderingContext) {
 
   let canvas = document.querySelector("#webgl") as HTMLCanvasElement;
   canvas.onmousedown = function(evt) {
-    handleClick(evt, gl, canvas, a_Position);
+    handleClick(evt, gl, canvas, a_Position, u_FragColor!);
   };
 }
 
-let g_points: number[] = [];
+let g_points: [number, number][] = [];
+// 多维数组 (string|number)[][]
+// Array<Array<string|number>>
+// 多维数组限制个数和类型 [number, number, number, number][] = []
+let g_colors: [number, number, number, number][] = [];
 function handleClick(
   event: MouseEvent,
   gl: WebGLRenderingContext,
   canvas: HTMLCanvasElement,
-  a_Position: number
+  a_Position: number,
+  u_FragColor: WebGLUniformLocation
 ) {
   let x = event.clientX;
   let y = event.clientY;
@@ -179,14 +192,26 @@ function handleClick(
   y = (canvas.width / 2 - (y - rect.top)) / (canvas.width / 2);
   // 为什么要记录这些点
   // 因为WebGL的绘制操作是在颜色缓冲区中进行的，绘制结束缓冲区得内容显示在屏幕上，颜色缓冲区被重置
-  g_points.push(x, y);
+  g_points.push([x, y]);
+  // 将点的颜色存储到g_colors中
+  if (x >= 0.0 && y >= 0.0) {
+    g_colors.push([1.0, 0.0, 0.0, 1.0]);
+  } else if (x < 0.0 && y < 0.0) {
+    g_colors.push([0.0, 1.0, 0.0, 1.0]);
+  } else {
+    g_colors.push([1.0, 1.0, 1.0, 1.0]);
+  }
 
   // 清除canvas
   gl.clear(gl.COLOR_BUFFER_BIT);
   let len = g_points.length;
   // 每次取两个点(x, y)坐标 所以每次跳过前两个点
-  for (let i = 0; i < len; i += 2) {
-    gl.vertexAttrib3f(a_Position, g_points[i], g_points[i + 1], 0.0);
+  for (let i = 0; i < len; i++) {
+    let xy = g_points[i];
+    let rgba = g_colors[i];
+    // 为啥不写 a_Positon, ...xy, 0.0 因为这样TS就不识别xy的个数了 虽然我明确规定了xy是一个两个number的数组
+    gl.vertexAttrib3f(a_Position, xy[0], xy[1], 0.0);
+    gl.uniform4f(u_FragColor, ...rgba);
     gl.drawArrays(gl.POINTS, 0, 1);
   }
 }
