@@ -207,9 +207,11 @@ function handleClick(
   let len = g_points.length;
   // 每次取两个点(x, y)坐标 所以每次跳过前两个点
   for (let i = 0; i < len; i++) {
-    let xy = g_points[i];
-    let rgba = g_colors[i];
+    const xy = g_points[i];
+    const rgba = g_colors[i];
     // 为啥不写 a_Positon, ...xy, 0.0 因为这样TS就不识别xy的个数了 虽然我明确规定了xy是一个两个number的数组
+    // ...[a_Position, ...xy , 0.0] as [number, number, number ,number]
+    // ...[a_Position, ...xy , 0.0] as const
     gl.vertexAttrib3f(a_Position, xy[0], xy[1], 0.0);
     gl.uniform4f(u_FragColor, ...rgba);
     gl.drawArrays(gl.POINTS, 0, 1);
