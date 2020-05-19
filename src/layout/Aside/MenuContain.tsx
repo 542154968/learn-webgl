@@ -1,5 +1,5 @@
 import { createComponent, SetupContext } from "@vue/composition-api";
-import { RoutesType } from "./routes";
+import { RoutesType } from "../../router/MenuArr";
 
 type PropsType = {
   item: RoutesType[0];

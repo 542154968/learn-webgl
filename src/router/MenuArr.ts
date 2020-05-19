@@ -33,7 +33,7 @@ const routes: RoutesType = [
       },
       {
         path: "/section2/class4",
-        name: "Attribute变量",
+        name: "Attribute和Uniform变量",
         icon: "",
         isPage: true
       }

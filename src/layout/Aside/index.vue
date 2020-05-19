@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { createComponent, ref, onMounted, watch } from "@vue/composition-api";
-import routes from "./routes";
+import routes from "../../router/MenuArr";
 import MenuItem from "./MenuItem";
 import MenuContain from "./MenuContain";
 import "./index.styl";

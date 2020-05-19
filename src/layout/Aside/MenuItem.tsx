@@ -1,6 +1,6 @@
 import { createComponent } from "@vue/composition-api";
 import MenuContain from "./MenuContain";
-import { RoutesType } from "./routes";
+import { RoutesType } from "../../router/MenuArr";
 
 type PropsType = {
   child: RoutesType[0];
