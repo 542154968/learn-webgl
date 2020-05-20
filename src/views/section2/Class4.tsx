@@ -6,7 +6,7 @@ import { initShaders } from "@lib/cuon-utils";
 import { codeStr as class1CodeStr } from "./Class1";
 
 // 顶点着色器
-const VSHADER_SOURCE = `
+export const VSHADER_SOURCE = `
   // attribute 在这里成为存储限定符 它表示接下来的变量是一个attribute变量
   // attribute变量必须声明为全局变量
   // 数据将从着色器外部传给该变量
@@ -20,7 +20,7 @@ const VSHADER_SOURCE = `
 `;
 
 // 片元着色器
-const FSHADER_SOURCE = `
+export const FSHADER_SOURCE = `
 // 使用片元着色器时 需要使用uniform变量 或者 可以使用 varying变量
 // uniform变量用来从JavaScript程序向顶点着色器和片元着色器传输一致的（不变的）数据
 // 变量声明格式 <存储限定符><类型><变量名>

@@ -38,6 +38,20 @@ const routes: RoutesType = [
         isPage: true
       }
     ]
+  },
+  {
+    path: "/section3",
+    name: "绘制和变换三角形",
+    icon: "el-icon-s-home",
+    isPage: false,
+    children: [
+      {
+        path: "/section3/class1",
+        name: "绘制多个点",
+        icon: "",
+        isPage: true
+      }
+    ]
   }
 ];
 

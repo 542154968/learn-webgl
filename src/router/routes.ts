@@ -24,6 +24,11 @@ const routes = [
       import(/* webpackChunkName: "section2-4" */ "@/views/section2/Class4")
   },
   {
+    path: "/section3/class1",
+    component: () =>
+      import(/* webpackChunkName: "section3-1" */ "@/views/section3/Class1")
+  },
+  {
     path: "/child",
     component: () => import(/* webpackChunkName: "child" */ "@/views/Child.tsx")
   }
