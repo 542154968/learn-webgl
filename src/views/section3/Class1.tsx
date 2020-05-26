@@ -21,6 +21,69 @@ const VSHADER_SOURCE = \`
 const FSHADER_SOURCE = \`
   ${FSHADER_SOURCE}
 \`;
+
+const canvas = document.querySelector("el-webgl");
+let gl = getWebGLContext(canvas);
+if (!gl) {
+  console.log("Faile to load");
+}
+
+// 初始化着色器
+if (!initShaders(gl, VSHADER_SOURCE, FSHADER_SOURCE)) {
+  console.log("failed to initialize shaders");
+  return;
+}
+
+const n = initVertexBuffers(gl);
+if (n < 0) {
+  console.log("Failed to set the position of the vertices");
+  return;
+}
+
+// 设置canvas背景色
+gl.clearColor(0.0, 0.0, 0.0, 1.0);
+// 清空canvas
+gl.clear(gl.COLOR_BUFFER_BIT);
+// 绘制一个点
+gl.drawArrays(gl.POINTS, 0, n);
+}
+
+function initVertexBuffers(gl: WebGLRenderingContext): number {
+const vertices = new Float32Array([0.0, 0.5, -0.5, -0.5, 0.5, -0.5]);
+const n = 3;
+
+// 创建缓冲区对象
+const vertexBuffer = gl.createBuffer();
+if (!vertexBuffer) {
+  console.log("Failed to create the buffer object");
+  return -1;
+}
+
+// 将缓冲区对象绑定到目标
+gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+// 向缓冲区对象中写入数据
+gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+// 获取attribute变量的存储位置
+// gl.program是指定包含顶点着色器和片元着色器的着色器程序对象
+const a_Position = gl.getAttribLocation(gl.program, "a_Position");
+const a_PointSize = gl.getAttribLocation(gl.program, "a_PointSize");
+const u_FragColor = gl.getUniformLocation(gl.program, "u_FragColor");
+
+// 设置颜色
+gl.uniform4f(u_FragColor, 0.0, 1.0, 0.0, 1);
+
+// 将顶点位置传输给attribute变量
+gl.vertexAttrib1f(a_PointSize, 10.0);
+
+// 将缓冲区对象分配给a_Position变量
+gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0);
+
+// 连接a_Position变量与分配给它的缓冲区对象
+gl.enableVertexAttribArray(a_Position);
+
+return n;
+}
 `;
 
 function handleCanvasReady(gl: WebGLRenderingContext) {
