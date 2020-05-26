@@ -12,6 +12,17 @@ const codeStr = `
 // 缓冲区对象可以一次性的向着色器传入多个顶点的数据
 // 缓冲区对象是WebGL系统中的一块内存区域，我们可以一次性地向缓冲区对象中填充大量的顶点数据，然后将其保存在其中，供顶点着色器使用。
 
+
+// 缓冲区对象
+// gl.createBuffer(buffer)
+// gl.deleteBuffer(buffer)
+
+// 类型化数组
+// 为了绘制三维图形，WebGL通常需要同时处理大量相同类型的数据。为了优化性能，WebGL为每种基本数据类型引入了一种特殊的数组（类型化数组）。
+// 浏览器事先知道数组中的数据类型，所以处理起来也更加有效率。
+
+
+
 // 顶点着色器
 const VSHADER_SOURCE = \`
   ${VSHADER_SOURCE}
@@ -60,8 +71,12 @@ if (!vertexBuffer) {
 }
 
 // 将缓冲区对象绑定到目标
+// ARRAY_BUFFER 缓冲区对象包含了顶点的数据
 gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 // 向缓冲区对象中写入数据
+// 第二个参数中的数据写入了绑定到第一个参数gl.ARRAY_BUFFER上的缓冲区对象
+// 我们不能直接向缓冲区写入数据，只能向“目标”写入数据，所以要向缓冲区写入数据，必须先绑定
+// STATIC_DRAW 只向缓冲区写入一次数据 但需要绘制很多次
 gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
 // 获取attribute变量的存储位置
@@ -93,6 +108,7 @@ function handleCanvasReady(gl: WebGLRenderingContext) {
     return;
   }
 
+  // 设置顶点位置
   const n = initVertexBuffers(gl);
   if (n < 0) {
     console.log("Failed to set the position of the vertices");
@@ -108,6 +124,7 @@ function handleCanvasReady(gl: WebGLRenderingContext) {
 }
 
 function initVertexBuffers(gl: WebGLRenderingContext): number {
+  // 使用缓冲区对象
   const vertices = new Float32Array([0.0, 0.5, -0.5, -0.5, 0.5, -0.5]);
   const n = 3;
 
@@ -119,8 +136,12 @@ function initVertexBuffers(gl: WebGLRenderingContext): number {
   }
 
   // 将缓冲区对象绑定到目标
+  // ARRAY_BUFFER 缓冲区对象包含了顶点的数据
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
   // 向缓冲区对象中写入数据
+  // 第二个参数中的数据写入了绑定到第一个参数gl.ARRAY_BUFFER上的缓冲区对象
+  // 我们不能直接向缓冲区写入数据，只能向“目标”写入数据，所以要向缓冲区写入数据，必须先绑定
+  // STATIC_DRAW 只向缓冲区写入一次数据 但需要绘制很多次
   gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
   // 获取attribute变量的存储位置
