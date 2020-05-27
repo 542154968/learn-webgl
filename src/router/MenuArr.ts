@@ -50,6 +50,12 @@ const routes: RoutesType = [
         name: "绘制多个点",
         icon: "",
         isPage: true
+      },
+      {
+        path: "/section3/class2",
+        name: "绘制三角形",
+        icon: "",
+        isPage: true
       }
     ]
   }
