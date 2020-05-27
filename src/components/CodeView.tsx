@@ -19,8 +19,8 @@ function formtReservedWord(text: string = "") {
 // 匹配引号间的内容
 function formatQuotes(text: string = "") {
   return text.replace(
-    /(?:&quot|&#39)(.*)?(?=&quot|&#39)/g,
-    '`<span class="hljs-string">$1</span>'
+    /(&quot|&#39)(.*)?(?=&quot|&#39)/g,
+    '$1<span class="hljs-string">$2</span>'
   );
 }
 
