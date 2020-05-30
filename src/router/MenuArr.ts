@@ -56,6 +56,12 @@ const routes: RoutesType = [
         name: "绘制三角形",
         icon: "",
         isPage: true
+      },
+      {
+        path: "/section3/class3",
+        name: "平移三角形",
+        icon: "",
+        isPage: true
       }
     ]
   }
