@@ -6,7 +6,7 @@ import { initShaders } from "@lib/cuon-utils";
 import { VSHADER_SOURCE, FSHADER_SOURCE } from "../section2/Class4";
 
 const codeStr = `
-// 相对于上一节代码
+// 相对于上一节代码 只需要改动这些 就可以绘制一个三角形了
 
 // 绘制一个三角形
 gl.drawArrays(gl.TRIANGLES, 0, n);
@@ -92,5 +92,3 @@ export default createComponent({
     );
   }
 });
-
-export { codeStr };
